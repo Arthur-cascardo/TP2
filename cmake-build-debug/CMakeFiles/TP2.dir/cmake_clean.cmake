@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TP2.dir/Matrix.cpp.o"
-  "CMakeFiles/TP2.dir/main.cpp.o"
-  "TP2"
+  "CMakeFiles/TP2.dir/Matrix.cpp.obj"
+  "CMakeFiles/TP2.dir/main.cpp.obj"
+  "TP2.exe"
+  "TP2.exe.manifest"
   "TP2.pdb"
+  "libTP2.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
