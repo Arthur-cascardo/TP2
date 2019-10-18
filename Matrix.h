@@ -26,6 +26,8 @@ public:
     Matrix operator*(const Matrix& m);
     bool operator==(const Matrix& m);
     bool operator!=(const Matrix& m);
+    bool verficarMesmoTamanho(const Matrix& a,const Matrix& b);
+    bool verficarPodeMultiplicar(const Matrix& a,const Matrix& b);
     //Operador friend permite que seja passado um objeto matriz como parametro
     //em vez de implicitamente ser referenciado o objeto do qual o método é membro
     friend std::ostream operator<<(std::ostream &saida, const Matrix &m);
