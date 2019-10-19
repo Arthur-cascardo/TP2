@@ -21,7 +21,7 @@ public:
     void operator+=(const Matrix& m);
     Matrix operator-(const Matrix& m);
     void operator-=(const Matrix& m);
-    void operator=~(const Matrix& m);
+    //void operator=~(const Matrix& m);
     void operator*=(const Matrix& m);
     Matrix operator*(const Matrix& m);
     bool operator==(const Matrix& m);

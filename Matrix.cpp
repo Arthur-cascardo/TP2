@@ -123,7 +123,7 @@ Matrix Matrix::operator*(const Matrix& m){
             }
         }
         for(int i = 0; i < this->linhas; i++){
-
+            int a;
         }
     }
 }
