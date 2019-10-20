@@ -36,23 +36,11 @@ int main() {
     Matrix Z(A);
 
     cin >> C;
-    cin >> X;
+    cout << endl;
+    cout << C;
 
-    if (C==X){
-        cout << "matrizes sao iguais";
-    }else{
-        cout << "matrizes sao diferentes";
-    }
-
-    if (C!=X){
-        cout << "matrizes sao diferentes";
-    }else{
-        cout << "matrizes sao iguais";
-    }
-
-
-
-
+    C*=2;
+    cout << C;
 
 
 
