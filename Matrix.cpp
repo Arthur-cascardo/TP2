@@ -82,9 +82,20 @@ void Matrix::operator()(int posLin, int posCol){
     //this->valores[posLin][posCol] = valor;
 }
 
+Matrix Matrix::operator = (const Matrix& m){
+    this -> linhas = m.linhas;
+    this -> colunas = m.colunas;
+
+    for(int i=0; i<linhas; i++){
+        for(int j=0; j<colunas; j++){
+            this -> valores[i][j] = m.valores[i][j];
+        }
+    }
+}
+
 Matrix Matrix::operator+(const Matrix& m){
     Matrix aux(m.linhas,m.colunas);
-    if (verficarMesmoTamanho(*this, m)){
+    if (!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
         << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
     } else {
@@ -98,7 +109,7 @@ Matrix Matrix::operator+(const Matrix& m){
 }
 
 void Matrix::operator+=(const Matrix& m){
-    if(verficarMesmoTamanho(*this, m)){
+    if(!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas + ")"
              << " com matriz de tamanho (" << m.linhas << "," << m.colunas + ")" << endl;
     } else {
@@ -112,7 +123,7 @@ void Matrix::operator+=(const Matrix& m){
 
 Matrix Matrix::operator-(const Matrix& m){
     Matrix aux(m.linhas,m.colunas);
-    if(verficarMesmoTamanho(*this, m)){
+    if(!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas + ")"
              << " com matriz de tamanho (" << m.linhas << "," << m.colunas + ")" << endl;
     } else {
@@ -137,10 +148,16 @@ void Matrix::operator-=(const Matrix& m){
         }
     }
 }
-/*
-void Matrix::operator~(const Matrix& m){
+
+void Matrix::operator~(){
+    Matrix m(linhas, colunas);
+    for(int i = 0; i<colunas; i++){
+        for(int j=0; j<linhas; j++){
+            m.valores[j][i] = valores[i][j];
+        }
+    }
 }
-*/
+
 //TODO: ARTHUR
 Matrix Matrix::operator*(const Matrix& m){
     int index_x = 0, index_y = 0;
@@ -169,12 +186,34 @@ void Matrix::operator*=(const Matrix& m){
 
 bool Matrix::operator==(const Matrix& m)
 {
-    return false;
+    if(!verficarMesmoTamanho(*this, m)){
+        return false;
+    } else{
+        for(int i=0; i<m.linhas; i++){
+            for(int j=0; j<m.colunas; j++){
+                if(this->valores[i][j] != m.valores[i][j]){
+                    return false;
+                }
+            }
+        }
+    }
+
 }
 
 bool Matrix::operator!=(const Matrix& m)
 {
-    return false;
+    if(!verficarMesmoTamanho(*this, m)){
+        return true;
+    } else{
+        for(int i=0; i<m.linhas; i++){
+            for(int j=0; j<m.colunas; j++){
+                if(this->valores[i][j] != m.valores[i][j]){
+                    return true;
+                }
+            }
+        }
+    }
+
 }
 
 std::ostream& operator<<(std::ostream& saida, const Matrix& m)
@@ -215,7 +254,7 @@ std::istream& operator>>(std::istream& entrada, Matrix& m)
 }
 
 bool Matrix::verficarMesmoTamanho(const Matrix &a, const Matrix &b) {
-    return (a.linhas != b.linhas || a.colunas != b.colunas);
+    return (a.linhas == b.linhas || a.colunas == b.colunas);
 }
 
 bool Matrix::verficarPodeMultiplicar(const Matrix &a, const Matrix &b) {

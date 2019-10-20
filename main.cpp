@@ -30,15 +30,30 @@ int main() {
 
 
     Matrix Y;
+    Matrix B;
     Matrix X(3,1), A(3,3), C(3,3);
-    Matrix W = C;
+
     Matrix Z(A);
 
-    int numeroLinhas = A.getRows();
-    int numeroColunas = A.getCols();
+    cin >> C;
+    cin >> X;
 
-    cin >> Y;
-    cout << Y;
+    if (C==X){
+        cout << "matrizes sao iguais";
+    }else{
+        cout << "matrizes sao diferentes";
+    }
+
+    if (C!=X){
+        cout << "matrizes sao diferentes";
+    }else{
+        cout << "matrizes sao iguais";
+    }
+
+
+
+
+
 
 
 

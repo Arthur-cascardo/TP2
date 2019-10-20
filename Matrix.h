@@ -19,11 +19,12 @@ public:
     int getRows();
     void imprimirMatriz();
     void operator()(int linhas, int colunas);
+    Matrix operator = (const Matrix&m);
     Matrix operator+(const Matrix& m);
     void operator+=(const Matrix& m);
     Matrix operator-(const Matrix& m);
     void operator-=(const Matrix& m);
-    //void operator=~(const Matrix& m);
+    void operator ~();
     void operator*=(const Matrix& m);
     Matrix operator*(const Matrix& m);
     bool operator==(const Matrix& m);
