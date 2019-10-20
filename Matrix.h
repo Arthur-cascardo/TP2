@@ -7,6 +7,7 @@
 
 #include <iostream>
 
+
 class Matrix {
 
 public:
@@ -16,6 +17,7 @@ public:
     Matrix(const Matrix& m);
     int getCols();
     int getRows();
+    void imprimirMatriz();
     void operator()(int linhas, int colunas);
     Matrix operator+(const Matrix& m);
     void operator+=(const Matrix& m);
@@ -30,8 +32,8 @@ public:
     bool verficarPodeMultiplicar(const Matrix& a,const Matrix& b);
     //Operador friend permite que seja passado um objeto matriz como parametro
     //em vez de implicitamente ser referenciado o objeto do qual o método é membro
-    friend std::ostream operator<<(std::ostream &saida, const Matrix &m);
-    friend std::istream operator>>(std::istream &entrada, Matrix &m);
+    friend std::ostream& operator<<(std::ostream &saida, const Matrix &m);
+    friend std::istream& operator>>(std::istream &entrada, Matrix &m);
     void zeros();
 
 private:
