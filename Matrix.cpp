@@ -12,7 +12,7 @@ Matrix::Matrix() {
 
 Matrix::Matrix(int linhas, int colunas, const double &valor) {
     if (linhas < 0 || colunas < 0) {
-        std::cout << "Digite um valor válido para colunas e linhas" << endl;
+        std::cout << "digite um valor válido para colunas e linhas" << endl;
         this->linhas = 0;
         this->colunas = 0;
         this->valores = new double *[0];
@@ -47,12 +47,8 @@ Matrix::Matrix(Matrix const& m) {
 
 int Matrix::getCols(){return colunas;}
 int Matrix::getRows() {return linhas;}
-void Matrix::setCols(int colunas) {this->colunas = colunas;}
-void Matrix::setRows(int linhas) {this->linhas = linhas;}
-double Matrix::getValorIndice(int linha, int coluna) {return this->valores[linha--][coluna--];};
-void Matrix::setValores(double **val){this->valores = val;};
 
-void Matrix::imprimeMatriz() const{
+void Matrix::imprimirMatriz(){
     if (linhas < 0 || colunas <0){
         cout << "Linha ou coluna com valor inválido";
     } else{
@@ -74,19 +70,19 @@ void Matrix:: zeros(){
     }
 
 
-double& Matrix::operator()(int posLin, int posCol){
+
+void Matrix::operator()(int posLin, int posCol){
 
     //TODO: Transformar impressão em metodo de erro;
     if(posLin > this->linhas){cout << "Matriz não possui indice " << posLin << " de Linha" << endl;}
     if(posCol > this->colunas){cout << "Matriz não possui indice " << posCol << " de Coluna" << endl;}
     posLin--;
     posCol--;
-    return this->valores[posLin][posCol];
+    //TODO: Achar um meio de receber o valor depois do igual
+    //this->valores[posLin][posCol] = valor;
 }
 
-//Operador ja possui implementação por default
-/*
-Matrix Matrix::operator= (const Matrix& m){
+Matrix Matrix::operator = (const Matrix& m){
     this -> linhas = m.linhas;
     this -> colunas = m.colunas;
 
@@ -97,7 +93,7 @@ Matrix Matrix::operator= (const Matrix& m){
     }
     return m;
 }
-*/
+
 Matrix Matrix::operator+(const Matrix& m){
     Matrix aux(m.linhas,m.colunas);
     if (!verficarMesmoTamanho(*this, m)){
@@ -153,14 +149,14 @@ void Matrix::operator-=(const Matrix& m){
         }
     }
 }
-Matrix Matrix::operator~(){
+
+void Matrix::operator~(){
     Matrix m(linhas, colunas);
-    for(int i = 0; i < colunas; i++){
-        for(int j=0; j < linhas; j++){
+    for(int i = 0; i<colunas; i++){
+        for(int j=0; j<linhas; j++){
             m.valores[j][i] = valores[i][j];
         }
     }
-    return m;
 }
 
 //TODO: ARTHUR
@@ -225,11 +221,11 @@ bool Matrix::operator!=(const Matrix& m)
 
 }
 
-std::ostream& operator<<(std::ostream& saida, Matrix& m)
+std::ostream& operator<<(std::ostream& saida, const Matrix& m)
 {
-    for(int i = 0; i < m.getRows(); i++){
-        for (int j=0; j < m.getCols(); j++){
-            cout << m.getValorIndice(i,j) << " ";
+    for(int i = 0; i < m.linhas; i++){
+        for (int j=0; j < m.colunas; j++){
+            cout << m.valores[i][j] << " ";
         }
         cout << endl;
     }
@@ -238,23 +234,26 @@ std::ostream& operator<<(std::ostream& saida, Matrix& m)
 
 std::istream& operator>>(std::istream& entrada, Matrix& m)
 {
-    int aux_rows, aux_cols;
-    double aux_val;
     std::cout << "Digite o numero de linhas: ";
-    std::cin >> aux_rows;
-    std::cout << "Digite o numero de colunas: ";
-    std::cin >> aux_cols;
+    entrada >> m.linhas;
 
-    Matrix(aux_rows, aux_cols);
+    std::cout << "Digite o numero de colunas: ";
+    entrada >> m.colunas;
+
+    m.valores = new double *[m.linhas];
+
+    for(int i =0; i<m.linhas; i++){
+        m.valores[i] = new double[m.colunas];
+    }
 
     std::cout << "Digite os valores da sua matriz: " << endl;
-    for(int j = 0; j < m.getRows(); j++){
-        std::cout << endl;
-        for(int i = 0; i < m.getCols(); i++){
+    for(int j = 0; j<m.linhas; j++){
+        std::cout<<endl;
+        for(int i = 0; i<m.colunas; i++){
             std::cout << "valor[" << j+1 << "][" << i+1 << "]: ";
-            entrada >> aux_val;
-            m(i + 1,j + 1) = aux_val;
+            entrada >> m.valores[j][i];
         }
+
     }
     return entrada;
 }

@@ -11,14 +11,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54254eeb-7721-4889-b710-e0ba1bf8327a" name="Default Changelist" comment="">
+    <list default="true" id="54254eeb-7721-4889-b710-e0ba1bf8327a" name="Default Changelist" comment="18/10 18:02">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP2.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP2.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +49,10 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -89,8 +88,10 @@
       <workItem from="1571410218478" duration="26000" />
       <workItem from="1571410248333" duration="621000" />
       <workItem from="1571411933365" duration="1671000" />
-      <workItem from="1571419830619" duration="6314000" />
-      <workItem from="1571661925645" duration="4311000" />
+      <workItem from="1571419830619" duration="6235000" />
+      <workItem from="1571431839126" duration="873000" />
+      <workItem from="1571435611303" duration="2267000" />
+      <workItem from="1571520805577" duration="1148000" />
     </task>
     <task id="LOCAL-00001" summary="Primeiro Commit">
       <created>1571410330259</created>
@@ -113,12 +114,12 @@
       <option name="project" value="LOCAL" />
       <updated>1571414121889</updated>
     </task>
-    <task id="LOCAL-00004" summary="Prototipos de métodos">
-      <created>1571426128374</created>
+    <task id="LOCAL-00004" summary="18/10 18:02">
+      <created>1571432580731</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1571426128374</updated>
+      <updated>1571432580732</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -140,9 +141,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Primeiro Commit" />
     <MESSAGE value="Commit" />
     <MESSAGE value="Prototipos de métodos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prototipos de métodos" />
+    <MESSAGE value="18/10 18:02" />
+    <option name="LAST_COMMIT_MESSAGE" value="18/10 18:02" />
   </component>
 </project>
