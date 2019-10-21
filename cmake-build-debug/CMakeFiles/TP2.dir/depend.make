@@ -4,5 +4,6 @@
 CMakeFiles/TP2.dir/Matrix.cpp.obj: ../Matrix.cpp
 CMakeFiles/TP2.dir/Matrix.cpp.obj: ../Matrix.h
 
+CMakeFiles/TP2.dir/main.cpp.obj: ../Matrix.h
 CMakeFiles/TP2.dir/main.cpp.obj: ../main.cpp
 
