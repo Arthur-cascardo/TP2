@@ -18,7 +18,7 @@ public:
     int getCols();
     int getRows();
     void imprimirMatriz();
-    void operator()(int linhas, int colunas);
+    double& operator()(int linhas, int colunas);
     Matrix operator = (const Matrix&m);
     Matrix operator+(const Matrix& m);
     void operator+=(const Matrix& m);

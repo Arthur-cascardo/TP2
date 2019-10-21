@@ -30,18 +30,16 @@ int main() {
 
 
     Matrix Y;
-    Matrix B;
     Matrix X(3,1), A(3,3), C(3,3);
-
     Matrix Z(A);
+    Matrix W = C;
+     int numeroLinhas = A.getRows();
+     int numeroColunas = A.getCols();
 
-    cin >> C;
+     cout << A;
+    A(2,1) = 10;
     cout << endl;
-    cout << C;
-
-    C*=2;
-    cout << C;
-
+    cout << A;
 
 
 

@@ -71,7 +71,7 @@ void Matrix:: zeros(){
 
 
 
-void Matrix::operator()(int posLin, int posCol){
+double& Matrix::operator()(int posLin, int posCol){
 
     //TODO: Transformar impressão em metodo de erro;
     if(posLin > this->linhas){cout << "Matriz não possui indice " << posLin << " de Linha" << endl;}
@@ -79,7 +79,15 @@ void Matrix::operator()(int posLin, int posCol){
     posLin--;
     posCol--;
     //TODO: Achar um meio de receber o valor depois do igual
-    //this->valores[posLin][posCol] = valor;
+    for(int i = 0; i < this->linhas; i++){
+        for (int j = 0; j < this->colunas; j++){
+            if(posLin == i){
+                if(posCol == j){
+                    return valores[i][j];
+                }
+            }
+        }
+    }
 }
 
 Matrix Matrix::operator = (const Matrix& m){
