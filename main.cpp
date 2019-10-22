@@ -3,45 +3,121 @@
 
 using namespace std;
 
-long long int fibonacci(int n){
-    if(n == 0 || n == 1){
-        return 1;
-    } else {
-        return fibonacci(n-1) + fibonacci(n-2);
-    }
-
-}
-
 int main() {
 
-    long long int aux = 0, n = 0, m = 1, x;
-/*
-    std::cin >> x;
-
-    for(int i = 0; i < x; i++){
-        aux = n + m;
-        std::cout << aux << std::endl;
-        n = m;
-        m = aux;
-    }
-
-    std::cout << fibonacci(x);
-    */
-
-
     Matrix Y;
-    Matrix X(3,1), A(3,3), C(3,3);
+    Matrix D;
+    Matrix X(3,1), A(3,3), C(3,3), B(3, 3);
     Matrix Z(A);
     Matrix W = C;
-     int numeroLinhas = A.getRows();
-     int numeroColunas = A.getCols();
+    int numeroLinhas = A.getRows();
+    int numeroColunas = A.getCols();
 
-     cout << A;
+
+    cin >> Y;
+    cout << Y << endl;
+
+    C =~ Y;
+
+    cout << C;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    cout << "altera o valor de uma posicao de A" << endl;
     A(2,1) = 10;
-    cout << endl;
+    cout << "------------------------------------" << endl;
+
+    cin >> Y;
+    cout << "a matriz Y: " << endl;
+    cout << Y << endl;
+
+    cout << "transforma tudo em 0" << endl;
+    Y.zeros();
+    cout << Y << endl;
+    cout << "------------------------------------" << endl;
+
+    cin >> A;
     cout << A;
 
+    cout << "soma de matrizes: " << endl;
+    C = A + A;
+    cout << C << endl;
+    cout << "------------------------------------" << endl;
 
+    cout << "Subtracao -=: " << endl;
+    C -= A;
+    cout << C << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "subtracao - : ";
+    Z = C - A;
+    cout << Z << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "soma: ";
+    A += A;
+    cout << A << endl;
+    cout << "------------------------------------" << endl;
+
+
+    cout << "A = transposta de C: ";
+    cout << "C: " << endl;
+    cout << C << endl;
+    A =~ C;
+    cout << "transposta: " << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "multiplicacao por constante: " << endl;
+    cout << "A: " << endl;
+    A*=2;
+    cout << A << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "multiplicacao de matrizes: " << endl;
+    cout << "A" << endl;
+    cout << A << endl;
+    cout << "C" << endl;
+    cout << C << endl;
+    B = A * C;
+    cout << B << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "operador de atribuicao: ";
+    Matrix D = B;
+    cout << B << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "igualdade de matrizes: " << endl;
+    if (D == B){
+        cout << "as matrizes D e B sao iguais" << endl;
+        cout << "------------------------------------" << endl;
+    }
+
+    cout << "desigualdade de matrizes: " << endl;
+    if (A != B){
+        cout << "as matrizes D e B sao diferentes" << endl;
+        cout << "------------------------------------" << endl;
+    }
+
+    */
 
 
     return 0;

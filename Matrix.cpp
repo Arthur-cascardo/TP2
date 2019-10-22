@@ -153,35 +153,38 @@ void Matrix::operator-=(const Matrix& m){
     }
 }
 Matrix Matrix::operator~(){
-    Matrix m(linhas, colunas);
-    for(int i = 0; i < colunas; i++){
-        for(int j=0; j < linhas; j++){
+    Matrix m(linhas,colunas);
+    for(int i=0;i<colunas;i++){
+        for(int j=0;j<linhas;j++){
             m.valores[j][i] = valores[i][j];
         }
     }
-    return m;
+
+    return (*this) = m;
 }
 
 //TODO: ARTHUR
 Matrix Matrix::operator*(const Matrix& m){
-    int index_x = 0, index_y = 0;
-    Matrix aux(this->linhas,m.colunas);
-    double aux_val[this->linhas*m.colunas];
-    if(!verficarPodeMultiplicar(*this, m)){
-        cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
+    Matrix aux(linhas,colunas);
+
+    if(!verficarPodeMultiplicar(*this, m)) {
+        cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," << this->colunas << ")"
              << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+        return aux;
     } else {
-        for(int k = 0; k < this->colunas; k++) {
-            for (int i = 0; i < this->linhas; i++) {
-                for (int j = 0; j < m.colunas; j++) {
-                    aux_val[i*j] += this->valores[i][j] * m.valores[j][k];
+
+
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < m.colunas; j++) {
+                int aux_val = 0;
+                for (int k = 0; k < colunas; k++) {
+                    aux_val += valores[i][k] * m.valores[k][j];
                 }
+                aux.valores[i][j] = aux_val;
             }
         }
-        for(int i = 0; i < this->linhas; i++){
-            int a;
-        }
     }
+    return aux;
 }
 
 void Matrix::operator*=(int constante){

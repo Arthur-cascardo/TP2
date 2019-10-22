@@ -35,8 +35,8 @@ public:
     void imprimeMatriz() const;
     //Operador friend permite que seja passado um objeto matriz como parametro
     //em vez de implicitamente ser referenciado o objeto do qual o método é membro
-    friend std::ostream operator<<(std::ostream &saida, const Matrix &m);
-    friend std::istream operator>>(std::istream &entrada, Matrix &m);
+    friend std::ostream& operator<<(std::ostream &saida, const Matrix &m);
+    friend std::istream& operator>>(std::istream &entrada, Matrix &m);
     void zeros();
 
 private:
