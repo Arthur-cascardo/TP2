@@ -14,8 +14,8 @@ public:
     Matrix();
     Matrix(int linhas, int colunas, const double &valor = 0);
     Matrix(const Matrix& m);
-    int getCols();
-    int getRows();
+    int getCols() const;
+    int getRows() const;
     void setCols(int colunas);
     void setRows(int linhas);
     double getValorIndice(int linha, int coluna);
@@ -35,8 +35,8 @@ public:
     void imprimeMatriz() const;
     //Operador friend permite que seja passado um objeto matriz como parametro
     //em vez de implicitamente ser referenciado o objeto do qual o método é membro
-    friend std::ostream operator<<(std::ostream &saida, const Matrix &m);
-    friend std::istream operator>>(std::istream &entrada, Matrix &m);
+    friend std::ostream &operator<<(std::ostream &saida, const Matrix &m);
+    friend std::istream &operator>>(std::istream &entrada, Matrix &m);
     void zeros();
 
 private:
