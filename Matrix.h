@@ -6,6 +6,8 @@
 #define TP2_MATRIX_H
 
 #include <iostream>
+#include <locale.h>
+
 
 class Matrix {
 
@@ -33,6 +35,7 @@ public:
     bool verficarMesmoTamanho(const Matrix& a,const Matrix& b);
     bool verficarPodeMultiplicar(const Matrix& a,const Matrix& b);
     void imprimeMatriz() const;
+    bool validacao(int a = 0, int b = 0);
     //Operador friend permite que seja passado um objeto matriz como parametro
     //em vez de implicitamente ser referenciado o objeto do qual o método é membro
     friend std::ostream& operator<<(std::ostream &saida, const Matrix &m);

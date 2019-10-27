@@ -1,25 +1,56 @@
 #include <iostream>
 #include "Matrix.h"
+#include <locale>
 
 using namespace std;
 
 int main() {
 
     Matrix Y;
-    Matrix D;
-    Matrix X(3,1), A(3,3), C(3,3), B(3, 3);
-    Matrix Z(A);
-    Matrix W = C;
+    Matrix X(3,1),A(3,3),C(3,3), L(3,3);
+    Matrix F(3,3,2);
+    Matrix W = F;
+    Matrix Z(W);
     int numeroLinhas = A.getRows();
     int numeroColunas = A.getCols();
 
 
-    cin >> Y;
-    cout << Y << endl;
 
-    C =~ Y;
 
-    cout << C;
+    /*
+
+
+    cout << "Matriz A(2,1) = 10: " <<endl;
+    cout << A << endl;
+    cout << "----------------------------------" << endl;
+
+
+    cout << "o numero de linhas da matriz A e: " << numeroLinhas << endl;
+    cout << "o numero de colunas da mariz A e: " << numeroColunas;
+
+
+    cout << "Matriz F: " << endl;
+    cout << F << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << "Matriz W: " << endl;
+    cout << W << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << "Matriz Z: " << endl;
+    cout << Z << endl;
+    cout << "----------------------------------" << endl;
+
+    F.zeros();
+    cout << "Matriz F: " << endl;
+    cout << F << endl;
+    cout << "----------------------------------" << endl;
+     */
+
+
+
+
+
 
 
 
