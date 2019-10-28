@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <locale.h>
+#include <list>
 
 
 class Matrix {

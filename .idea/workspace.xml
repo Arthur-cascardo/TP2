@@ -91,6 +91,7 @@
       <workItem from="1571431839126" duration="873000" />
       <workItem from="1571435611303" duration="2267000" />
       <workItem from="1571520805577" duration="1148000" />
+      <workItem from="1572294320517" duration="3238000" />
     </task>
     <task id="LOCAL-00001" summary="Primeiro Commit">
       <created>1571410330259</created>
@@ -134,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571700816098</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Operadores de comparação">
+      <created>1571721781388</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1571721781389</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,14 +169,15 @@
     <MESSAGE value="18/10 18:02" />
     <MESSAGE value="Tudo certo" />
     <MESSAGE value="Arquivos particulares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arquivos particulares" />
+    <MESSAGE value="Operadores de comparação" />
+    <option name="LAST_COMMIT_MESSAGE" value="Operadores de comparação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Matrix.cpp</url>
-          <line>215</line>
+          <line>232</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
