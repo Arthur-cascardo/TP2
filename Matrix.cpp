@@ -152,14 +152,24 @@ void Matrix::operator-=(const Matrix& m){
     }
 }
 Matrix Matrix::operator~(){
-    Matrix m(linhas,colunas);
-    for(int i=0;i<colunas;i++){
-        for(int j=0;j<linhas;j++){
-            m.valores[j][i] = this->valores[i][j];
+    Matrix m(this->colunas,this->linhas);
+
+    list<double> valores_aux;
+
+    for(int i=0 ;i < linhas;i++){
+        for(int j=0 ;j < colunas;j++){
+              valores_aux.push_back(this->valores[i][j]);
         }
     }
 
-    return (*this) = m;
+    for(int i=0 ;i < linhas;i++){
+        for(int j=0 ;j < colunas;j++){
+            m.valores[i][j] = valores_aux.front();
+            valores_aux.pop_front();
+        }
+    }
+
+    return (*this = m);
     
 }
 

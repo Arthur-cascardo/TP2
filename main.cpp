@@ -6,8 +6,9 @@ using namespace std;
 
 int main() {
 
+    setlocale(LC_ALL, "Portuguese");
 
-    Matrix Y;
+    Matrix Y,B;
     Matrix X(3,1),A(3,3),C(3,3), L(3,3);
     Matrix F(3,3,2);
     Matrix W = F;
@@ -18,10 +19,10 @@ int main() {
 
 
 
-    /*
 
+/*
 
-    cout << "Matriz A(2,1) = 10: " <<endl;
+    cout << "Matriz A(2,1) = 10: " << endl;
     cout << A << endl;
     cout << "----------------------------------" << endl;
 
@@ -46,7 +47,6 @@ int main() {
     cout << "Matriz F: " << endl;
     cout << F << endl;
     cout << "----------------------------------" << endl;
-     */
 
 
 
@@ -72,7 +72,8 @@ int main() {
 
 
 
-/*
+
+
     cout << "altera o valor de uma posicao de A" << endl;
     A(2,1) = 10;
     cout << "------------------------------------" << endl;
@@ -145,11 +146,18 @@ int main() {
 
     cout << "desigualdade de matrizes: " << endl;
     if (A != B){
-        cout << "as matrizes D e B sao diferentes" << endl;
+        cout << "as matrizes A e B sao diferentes" << endl;
         cout << "------------------------------------" << endl;
     }
 
-    */
+*/
+
+    cout << "Transposta de Y: " << endl;
+    cin >> Y;
+    X =~ Y;
+    cout << "------------------------------------" << endl;
+    cout << X;
+    cout << "------------------------------------" << endl;
 
 
     return 0;
