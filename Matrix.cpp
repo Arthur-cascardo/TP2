@@ -40,15 +40,26 @@ Matrix::Matrix(int linhas, int colunas, const double &valor) {
 
 }
 
-Matrix::Matrix(Matrix const& m) {
+Matrix::Matrix(const Matrix & m) {
 
-    this->colunas = m.colunas;
-    this->linhas = m.linhas;
-    this->valores = m.valores;
+    this->colunas = m.getCols();
+    this->linhas = m.getRows();
+
+    this->valores = new double *[this->linhas];
+
+    for (int i = 0; i < linhas; i++) {
+        this->valores[i] = new double[this->colunas];
+    }
+
+    for(int i = 0; i < m.getRows(); i++){
+        for(int j = 0; j < m.getCols(); j++){
+           this->valores[i][j] = m.valores[j][i];
+        }
+    }
 }
 
-int Matrix::getCols(){return colunas;}
-int Matrix::getRows() {return linhas;}
+int Matrix::getCols() const{return colunas;}
+int Matrix::getRows() const{return linhas;}
 void Matrix::setCols(int colunas) {this->colunas = colunas;}
 void Matrix::setRows(int linhas) {this->linhas = linhas;}
 double Matrix::getValorIndice(int linha, int coluna) {return this->valores[linha--][coluna--];};
@@ -78,7 +89,6 @@ void Matrix:: zeros(){
 
 double& Matrix::operator()(int posLin, int posCol){
 
-    //TODO: Transformar impressão em metodo de erro;
     if(posLin > this->linhas){cout << "Matriz não possui indice " << posLin << " de Linha" << endl;}
     if(posCol > this->colunas){cout << "Matriz não possui indice " << posCol << " de Coluna" << endl;}
     posLin--;
@@ -86,24 +96,11 @@ double& Matrix::operator()(int posLin, int posCol){
     return this->valores[posLin][posCol];
 }
 
-//Operador ja possui implementação por default
-/*
-Matrix Matrix::operator= (const Matrix& m){
-    this -> linhas = m.linhas;
-    this -> colunas = m.colunas;
-    for(int i=0; i<linhas; i++) {
-        for (int j = 0; j < colunas; j++) {
-            this->valores[i][j] = m.valores[i][j];
-        }
-    }
-    return m;
-}
-*/
 Matrix Matrix::operator+(const Matrix& m){
-    Matrix aux(m.linhas,m.colunas);
+    Matrix aux(m.getRows(),m.getCols());
     if (!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
-             << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+             << " com matriz de tamanho (" << m.getRows() << "," << m.getCols() << ")" << endl;
     } else {
         for(int i = 0; i < aux.linhas; i++){
             for(int j = 0; j < aux.colunas; j++){
@@ -117,7 +114,7 @@ Matrix Matrix::operator+(const Matrix& m){
 void Matrix::operator+=(const Matrix& m){
     if(!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
-             << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+             << " com matriz de tamanho (" << m.getRows() << "," << m.getCols() << ")" << endl;
     } else {
         for(int i = 0; i < this->linhas; i++){
             for(int j = 0; j < this->colunas; j++){
@@ -128,10 +125,10 @@ void Matrix::operator+=(const Matrix& m){
 }
 
 Matrix Matrix::operator-(const Matrix& m){
-    Matrix aux(m.linhas,m.colunas);
+    Matrix aux(m.getRows(),m.getCols());
     if(!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
-             << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+             << " com matriz de tamanho (" << m.getRows() << "," << m.getCols() << ")" << endl;
     } else {
         for(int i = 0; i < aux.linhas; i++){
             for(int j = 0; j < aux.colunas; j++){
@@ -145,7 +142,7 @@ Matrix Matrix::operator-(const Matrix& m){
 void Matrix::operator-=(const Matrix& m){
     if(!verficarMesmoTamanho(*this, m)){
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
-             << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+             << " com matriz de tamanho (" << m.getRows() << "," << m.getCols() << ")" << endl;
     } else {
         for(int i = 0; i < this->linhas; i++){
             for(int j = 0; j < this->colunas; j++){
@@ -168,6 +165,7 @@ Matrix Matrix::operator~(){
 
 //TODO: ARTHUR
 Matrix Matrix::operator*(const Matrix& m){
+
     Matrix aux(linhas,colunas);
 
     if(!verficarPodeMultiplicar(*this, m)) {
@@ -200,40 +198,46 @@ void Matrix::operator*=(int constante){
 
 bool Matrix::operator==(const Matrix& m)
 {
+    bool aux = true;
+
     if(!verficarMesmoTamanho(*this, m)){
         return false;
-    } else{
-        for(int i=0; i<m.linhas; i++){
-            for(int j=0; j<m.colunas; j++){
+    } else {
+        for(int i=0; i < m.getRows(); i++){
+            for(int j=0; j < m.getCols(); j++){
                 if(this->valores[i][j] != m.valores[i][j]){
-                    return false;
+                    aux = false;
                 }
             }
         }
+        return aux;
     }
-
 }
 
 bool Matrix::operator!=(const Matrix& m)
 {
+
+    bool aux = false;
+
     if(!verficarMesmoTamanho(*this, m)){
         return true;
     } else{
-        for(int i=0; i<m.linhas; i++){
-            for(int j=0; j<m.colunas; j++){
-                if(this->valores[i][j] != m.valores[i][j]){
-                    return true;
+        for(int i=0; i<m.getRows(); i++){
+            for(int j=0; j<m.getCols(); j++){
+                if(this->valores[i][j] != m.valores[j][i]){
+                    aux = true;
                 }
             }
         }
+        return aux;
     }
 
 }
 
 std::ostream& operator<<(std::ostream& saida, const Matrix& m)
 {
-    for(int i = 0; i < m.linhas; i++){
-        for (int j=0; j < m.colunas; j++){
+    for(int i = 0; i < m.getRows(); i++){
+        for (int j=0; j < m.getCols(); j++){
             cout << m.valores[i][j] << " ";
         }
         cout << endl;
@@ -253,10 +257,10 @@ std::istream& operator>>(std::istream& entrada, Matrix& m)
         entrada >> m.colunas;
     } while(m.colunas < 0);
 
-    m.valores = new double *[m.linhas];
+    m.valores = new double * [m.getRows()];
 
-    for(int i =0; i<m.linhas; i++){
-        m.valores[i] = new double[m.colunas];
+    for(int i =0; i < m.getRows(); i++){
+        m.valores[i] = new double[m.getCols()];
     }
 
 
@@ -267,7 +271,6 @@ std::istream& operator>>(std::istream& entrada, Matrix& m)
             std::cout << "valor[" << i+1 << "][" << j+1 << "]: ";
 
             entrada >> m.valores[i][j];
-
         }
 
     }

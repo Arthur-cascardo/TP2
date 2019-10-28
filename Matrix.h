@@ -16,8 +16,8 @@ public:
     Matrix();
     Matrix(int linhas, int colunas, const double &valor = 0);
     Matrix(const Matrix& m);
-    int getCols();
-    int getRows();
+    int getCols() const;
+    int getRows() const;
     void setCols(int colunas);
     void setRows(int linhas);
     double getValorIndice(int linha, int coluna);
