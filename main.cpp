@@ -1,37 +1,155 @@
 #include <iostream>
 #include "Matrix.h"
+#include <locale>
 
 using namespace std;
 
 int main() {
 
+
     Matrix Y;
-    Matrix X(3,1), A(3,3), C(3,3);
-    Matrix W = C;
-    Matrix Z(A);
+    Matrix X(3,1),A(3,3),C(3,3), L(3,3);
+    Matrix F(3,3,2);
+    Matrix W = F;
+    Matrix Z(W);
     int numeroLinhas = A.getRows();
     int numeroColunas = A.getCols();
-    A(2,1)=10; // altera o valor de uma posição de A
-    Y.zeros(); // modifica todos os elementos de Y para o valor zero
-    C=A+A; // Soma
-    C-=A; // Subtração
-    A=C-A; // Subtração
-    A+=A; // Soma
-    A=~C; // A é igual a transposta de C
-    X*=2; // multiplicação por uma constante
-    C=A*X; // multiplicação de matrizes
 
-    cout << "A: " << endl << A << endl;
-    cout << "X: " << endl << X << endl;
-    cout << "Y: " << endl << Y << endl;
-    //cout << C << endl;
-    cout << "W: " << endl << W << endl;
-    cout << "Z: " << endl << Z << endl;
 
-    if (A == A) // verifica a igualdade entre A e C
-        if(X == Y) // verifica a desigualdade entre A e C
-            cout << X << endl; // Impressão de matrizes
-    cin >> Y; // leitura de dados para dentro da matriz Y
+
+
+    /*
+
+
+    cout << "Matriz A(2,1) = 10: " <<endl;
+    cout << A << endl;
+    cout << "----------------------------------" << endl;
+
+
+    cout << "o numero de linhas da matriz A e: " << numeroLinhas << endl;
+    cout << "o numero de colunas da mariz A e: " << numeroColunas;
+
+
+    cout << "Matriz F: " << endl;
+    cout << F << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << "Matriz W: " << endl;
+    cout << W << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << "Matriz Z: " << endl;
+    cout << Z << endl;
+    cout << "----------------------------------" << endl;
+
+    F.zeros();
+    cout << "Matriz F: " << endl;
+    cout << F << endl;
+    cout << "----------------------------------" << endl;
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    cout << "altera o valor de uma posicao de A" << endl;
+    A(2,1) = 10;
+    cout << "------------------------------------" << endl;
+
+    cin >> Y;
+    cout << "a matriz Y: " << endl;
+    cout << Y << endl;
+
+    cout << "transforma tudo em 0" << endl;
+    Y.zeros();
+    cout << Y << endl;
+    cout << "------------------------------------" << endl;
+
+    cin >> A;
+    cout << A;
+
+    cout << "soma de matrizes: " << endl;
+    C = A + A;
+    cout << C << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "Subtracao -=: " << endl;
+    C -= A;
+    cout << C << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "subtracao - : ";
+    Z = C - A;
+    cout << Z << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "soma: ";
+    A += A;
+    cout << A << endl;
+    cout << "------------------------------------" << endl;
+
+
+    cout << "A = transposta de C: ";
+    cout << "C: " << endl;
+    cout << C << endl;
+    A =~ C;
+    cout << "transposta: " << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "multiplicacao por constante: " << endl;
+    cout << "A: " << endl;
+    A*=2;
+    cout << A << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "multiplicacao de matrizes: " << endl;
+    cout << "A" << endl;
+    cout << A << endl;
+    cout << "C" << endl;
+    cout << C << endl;
+    B = A * C;
+    cout << B << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "operador de atribuicao: ";
+    Matrix D = B;
+    cout << B << endl;
+    cout << "------------------------------------" << endl;
+
+    cout << "igualdade de matrizes: " << endl;
+    if (D == B){
+        cout << "as matrizes D e B sao iguais" << endl;
+        cout << "------------------------------------" << endl;
+    }
+
+    cout << "desigualdade de matrizes: " << endl;
+    if (A != B){
+        cout << "as matrizes D e B sao diferentes" << endl;
+        cout << "------------------------------------" << endl;
+    }
+
+    */
 
 
     return 0;

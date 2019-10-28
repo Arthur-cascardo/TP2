@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include <locale.h>
 
 using namespace std;
 
@@ -11,7 +12,8 @@ Matrix::Matrix() {
 }
 
 Matrix::Matrix(int linhas, int colunas, const double &valor) {
-    if (linhas < 0 || colunas < 0) {
+
+    if (validacao(linhas, colunas)) {
         std::cout << "Digite um valor válido para colunas e linhas" << endl;
         this->linhas = 0;
         this->colunas = 0;
@@ -150,35 +152,40 @@ void Matrix::operator-=(const Matrix& m){
     }
 }
 Matrix Matrix::operator~(){
-    Matrix m(linhas, colunas);
-    for(int i = 0; i < colunas; i++){
-        for(int j=0; j < linhas; j++){
-            m.valores[j][i] = valores[i][j];
+    Matrix m(linhas,colunas);
+    for(int i=0;i<colunas;i++){
+        for(int j=0;j<linhas;j++){
+            m.valores[j][i] = this->valores[i][j];
         }
     }
-    return m;
+
+    return (*this) = m;
+    
 }
 
 //TODO: ARTHUR
 Matrix Matrix::operator*(const Matrix& m){
-    int index_x = 0, index_y = 0;
-    Matrix aux(this->linhas,m.getCols());
-    double aux_val[this->linhas*m.getCols()];
-    if(!verficarPodeMultiplicar(*this, m)){
-        cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," <<this->colunas << ")"
-             << " com matriz de tamanho (" << m.getRows() << "," << m.getCols() << ")" << endl;
+
+    Matrix aux(linhas,colunas);
+
+    if(!verficarPodeMultiplicar(*this, m)) {
+        cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," << this->colunas << ")"
+             << " com matriz de tamanho (" << m.linhas << "," << m.colunas << ")" << endl;
+        return aux;
     } else {
-        for(int k = 0; k < this->colunas; k++) {
-            for (int i = 0; i < this->linhas; i++) {
-                for (int j = 0; j < m.getCols(); j++) {
-                    aux_val[i*j] += this->valores[i][j] * m.valores[j][k];
+
+
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < m.colunas; j++) {
+                int aux_val = 0;
+                for (int k = 0; k < colunas; k++) {
+                    aux_val += valores[i][k] * m.valores[k][j];
                 }
+                aux.valores[i][j] = aux_val;
             }
         }
-        for(int i = 0; i < this->linhas; i++){
-            int a;
-        }
     }
+    return aux;
 }
 
 void Matrix::operator*=(int constante){
@@ -240,11 +247,15 @@ std::ostream& operator<<(std::ostream& saida, const Matrix& m)
 
 std::istream& operator>>(std::istream& entrada, Matrix& m)
 {
-    std::cout << "Digite o numero de linhas: ";
-    entrada >> m.linhas;
+    do{
+        std::cout << "Digite o numero de linhas inteiro e positivo: ";
+        entrada >> m.linhas;
+    } while(m.linhas < 0);
 
-    std::cout << "Digite o numero de colunas: ";
-    entrada >> m.colunas;
+    do {
+        std::cout << "Digite o numero de colunas inteiro e positivo: ";
+        entrada >> m.colunas;
+    } while(m.colunas < 0);
 
     m.valores = new double * [m.getRows()];
 
@@ -252,12 +263,14 @@ std::istream& operator>>(std::istream& entrada, Matrix& m)
         m.valores[i] = new double[m.getCols()];
     }
 
+
     std::cout << "Digite os valores da sua matriz: " << endl;
-    for(int j = 0; j < m.getRows(); j++){
+    for(int i = 0; i<m.linhas; i++){
         std::cout<<endl;
-        for(int i = 0; i < m.getCols(); i++){
-            std::cout << "valor[" << j+1 << "][" << i+1 << "]: ";
-            entrada >> m.valores[j][i];
+        for(int j = 0; j<m.colunas; j++){
+            std::cout << "valor[" << i+1 << "][" << j+1 << "]: ";
+
+            entrada >> m.valores[i][j];
         }
 
     }
@@ -265,9 +278,15 @@ std::istream& operator>>(std::istream& entrada, Matrix& m)
 }
 
 bool Matrix::verficarMesmoTamanho(const Matrix &a, const Matrix &b) {
-    return (a.linhas == b.linhas || a.colunas == b.colunas);
+    return (a.linhas == b.linhas && a.colunas == b.colunas);
 }
 
 bool Matrix::verficarPodeMultiplicar(const Matrix &a, const Matrix &b) {
     return (a.colunas == b.linhas);
 }
+
+bool Matrix::validacao(int linhas, int colunas){
+    return(linhas < 0 || colunas < 0);
+
+}
+
