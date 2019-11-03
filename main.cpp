@@ -20,7 +20,7 @@ int main() {
 
 
 
-/*
+
 
     cout << "Matriz A(2,1) = 10: " << endl;
     cout << A << endl;
@@ -72,7 +72,7 @@ int main() {
 
 
 
-
+/*
 
     cout << "altera o valor de uma posicao de A" << endl;
     A(2,1) = 10;
@@ -86,7 +86,7 @@ int main() {
     Y.zeros();
     cout << Y << endl;
     cout << "------------------------------------" << endl;
-
+*/
     cin >> A;
     cout << A;
 
@@ -110,12 +110,11 @@ int main() {
     cout << A << endl;
     cout << "------------------------------------" << endl;
 
-
     cout << "A = transposta de C: ";
-    cout << "C: " << endl;
     cout << C << endl;
-    A =~ C;
     cout << "transposta: " << endl;
+    A =~ C;
+    cout << A << endl;
     cout << "------------------------------------" << endl;
 
     cout << "multiplicacao por constante: " << endl;
@@ -150,7 +149,7 @@ int main() {
         cout << "------------------------------------" << endl;
     }
 
-*/
+
 
     cout << "Transposta de Y: " << endl;
     cin >> Y;
