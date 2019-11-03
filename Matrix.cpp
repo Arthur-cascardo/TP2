@@ -51,9 +51,17 @@ Matrix::Matrix(const Matrix & m) {
         this->valores[i] = new double[this->colunas];
     }
 
-    for(int i = 0; i < m.getRows(); i++){
-        for(int j = 0; j < m.getCols(); j++){
-           this->valores[i][j] = m.valores[j][i];
+    if(this->colunas < this->linhas){
+        for(int i = 0; i < m.getRows(); i++){
+            for(int j = 0; j < m.getCols(); j++){
+                this->valores[i][j] = m.valores[j][i];
+            }
+        }
+    } else {
+        for(int i = 0; i < m.getRows(); i++){
+            for(int j = 0; j < m.getCols(); j++){
+                this->valores[i][j] = m.valores[i][j];
+            }
         }
     }
 }
@@ -152,7 +160,7 @@ void Matrix::operator-=(const Matrix& m){
     }
 }
 Matrix Matrix::operator~(){
-    Matrix m(this->colunas,this->linhas);
+    Matrix m(this->colunas,this->linhas, 0);
 
     list<double> valores_aux;
 
@@ -162,21 +170,28 @@ Matrix Matrix::operator~(){
         }
     }
 
-    for(int i=0 ;i < linhas;i++){
-        for(int j=0 ;j < colunas;j++){
-            m.valores[i][j] = valores_aux.front();
-            valores_aux.pop_front();
+    if(this->colunas >=  this->linhas){
+        for(int i=0 ;i < linhas;i++){
+            for(int j=0 ;j < colunas;j++){
+                m.valores[i][j] = valores_aux.front();
+                valores_aux.pop_front();
+            }
+        }
+    } else {
+        for(int i=0 ;i < colunas;i++){
+            for(int j=0 ;j < linhas;j++){
+                m.valores[i][j] = valores_aux.front();
+                valores_aux.pop_front();
+            }
         }
     }
-
     return (*this = m);
-    
 }
 
-//TODO: ARTHUR
+
 Matrix Matrix::operator*(const Matrix& m){
 
-    Matrix aux(linhas,colunas);
+    Matrix aux(linhas,colunas, 0);
 
     if(!verficarPodeMultiplicar(*this, m)) {
         cout << "Não é possível operar matriz de tamanho (" << this->linhas << "," << this->colunas << ")"
@@ -232,10 +247,20 @@ bool Matrix::operator!=(const Matrix& m)
     if(!verficarMesmoTamanho(*this, m)){
         return true;
     } else{
-        for(int i=0; i<m.getRows(); i++){
-            for(int j=0; j<m.getCols(); j++){
-                if(this->valores[i][j] != m.valores[j][i]){
-                    aux = true;
+        if(this->colunas < this->linhas){
+            for(int i=0; i<m.getRows(); i++){
+                for(int j=0; j<m.getCols(); j++){
+                    if(this->valores[i][j] != m.valores[j][i]){
+                        aux = true;
+                    }
+                }
+            }
+        } else {
+            for(int i=0; i<m.getRows(); i++){
+                for(int j=0; j<m.getCols(); j++){
+                    if(this->valores[i][j] != m.valores[i][j]){
+                        aux = true;
+                    }
                 }
             }
         }
@@ -299,4 +324,5 @@ bool Matrix::validacao(int linhas, int colunas){
     return(linhas < 0 || colunas < 0);
 
 }
+
 

@@ -14,7 +14,6 @@
     <list default="true" id="54254eeb-7721-4889-b710-e0ba1bf8327a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -91,7 +90,8 @@
       <workItem from="1571431839126" duration="873000" />
       <workItem from="1571435611303" duration="2267000" />
       <workItem from="1571520805577" duration="1148000" />
-      <workItem from="1572294320517" duration="3238000" />
+      <workItem from="1572531895285" duration="3436000" />
+      <workItem from="1572793148434" duration="1415000" />
     </task>
     <task id="LOCAL-00001" summary="Primeiro Commit">
       <created>1571410330259</created>
@@ -135,14 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1571700816098</updated>
     </task>
-    <task id="LOCAL-00007" summary="Operadores de comparação">
-      <created>1571721781388</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1571721781389</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,16 +162,15 @@
     <MESSAGE value="18/10 18:02" />
     <MESSAGE value="Tudo certo" />
     <MESSAGE value="Arquivos particulares" />
-    <MESSAGE value="Operadores de comparação" />
-    <option name="LAST_COMMIT_MESSAGE" value="Operadores de comparação" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arquivos particulares" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Matrix.cpp</url>
-          <line>232</line>
-          <option name="timeStamp" value="45" />
+          <line>182</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
